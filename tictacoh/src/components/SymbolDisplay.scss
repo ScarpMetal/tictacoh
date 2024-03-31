@@ -1,0 +1,7 @@
+.symbol-display {
+  user-select: none;
+
+  &[data-invert="true"] {
+    filter: invert(1);
+  }
+}

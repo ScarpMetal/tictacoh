@@ -1,0 +1,44 @@
+.frame {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border: solid 3px transparent;
+  border-radius: 1em;
+
+  &[data-can-place="true"] {
+    animation: slow-pulsate-can-place 2s infinite ease-in-out;
+  }
+
+  &[data-can-place="false"] {
+    // animation: slow-pulsate-cant-place 1s infinite ease-in-out;
+  }
+}
+
+@keyframes slow-pulsate-can-place {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(113, 196, 113);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+
+@keyframes slow-pulsate-cant-place {
+  0% {
+    border-color: transparent;
+  }
+  40% {
+    border-color: red;
+  }
+  60% {
+    border-color: red;
+  }
+  100% {
+    border-color: transparent;
+  }
+}

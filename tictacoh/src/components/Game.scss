@@ -1,0 +1,36 @@
+.game {
+  display: grid;
+  grid-template-rows: 0.5fr 1fr 3fr 1fr 0.5fr;
+  gap: 4em;
+  height: 100dvh;
+  height: 100vh;
+  width: 100dvw;
+  width: 100vw;
+  min-height: 0; /* NEW */
+  min-width: 0; /* NEW; needed for Firefox */
+}
+
+.pieces-container,
+.frames-container {
+  position: relative;
+  min-width: 0;
+  min-width: 0; /* NEW; needed for Firefox */
+  // background-color: rgba(255, 255, 255, 0.1);
+}
+
+.frames {
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 0.5em;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  overflow: hidden;
+  max-width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  // background-color: rgba(255, 255, 255, 0.1);
+}
