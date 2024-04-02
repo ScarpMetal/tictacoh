@@ -6,6 +6,7 @@ import {
 } from "~/atoms/gameAtoms";
 import { Game } from "~/components/Game";
 import { Modal } from "~/components/Modal";
+import { GameManagerEffect } from "~/components/effects/GameManagerEffect";
 import "./App.scss";
 
 const selectableSymbolDisplays = [
@@ -39,6 +40,7 @@ export function App() {
 
   return (
     <>
+      <GameManagerEffect />
       {gameStep === "info" && (
         <Modal>
           <div className="symbol-select-label">Select your symbol</div>

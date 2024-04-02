@@ -8,6 +8,21 @@ import { FrameId, PieceId, PieceSymbol, PieceType } from "~/types/gameTypes";
 
 export const playerSymbolDisplayAtom = atom<string | null>(null);
 export const opponentSymbolDisplayAtom = atom<string | null>(null);
+export const symbolStartAtom = atom<PieceSymbol | null>(null);
+export const symbolTurnAtom = atom<PieceSymbol | null>((get) => {
+  const numPlayerPlayed = 6 - get(unplayedPiecesFamily("X")).length;
+  const numOpponentPlayer = 6 - get(unplayedPiecesFamily("O")).length;
+  const symbolStart = get(symbolStartAtom);
+  console.log("numPlayerPlayed", numPlayerPlayed);
+  console.log("numOpponentPlayer", numOpponentPlayer);
+  if (!symbolStart) return null;
+
+  if (symbolStart === "X") {
+    return numPlayerPlayed <= numOpponentPlayer ? "X" : "O";
+  } else {
+    return numPlayerPlayed < numOpponentPlayer ? "X" : "O";
+  }
+});
 
 /*
  * GAME

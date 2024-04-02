@@ -27,7 +27,7 @@
     font-size: 4em;
   }
 
-  &.in-tray {
+  &[data-is-draggable="true"] {
     cursor: grab;
 
     &:active {
