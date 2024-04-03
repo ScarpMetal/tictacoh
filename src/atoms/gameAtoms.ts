@@ -31,7 +31,7 @@ export const symbolTurnAtom = atom<PieceSymbol | null>((get) => {
 export const gameStepAtom = atom((get) => {
   const playerSymbolDisplay = get(playerSymbolDisplayAtom);
   const opponentSymbolDisplay = get(opponentSymbolDisplayAtom);
-  if (!playerSymbolDisplay) return "info";
+  if (!playerSymbolDisplay) return "symbol-select";
   if (!opponentSymbolDisplay) return "connecting";
   return "playing";
 });

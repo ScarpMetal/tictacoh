@@ -1,0 +1,21 @@
+.symbol-select-label {
+  margin-bottom: 1em;
+}
+
+.symbol-select {
+  display: grid;
+  grid-template-columns: repeat(4, 4em);
+  grid-template-rows: repeat(4, 4em);
+  gap: 1em;
+
+  .selectable-symbol {
+    font-size: 2em;
+    padding: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 100%;
+    user-select: none;
+  }
+}
