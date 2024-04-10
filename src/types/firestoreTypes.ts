@@ -17,16 +17,3 @@ export function isGameType(game: unknown): game is GameType {
     "playerId" in (game as GameType)
   );
 }
-
-export interface PlayerType {
-  // id: string;
-  symbol: string;
-}
-
-export interface ClientPlayerType extends PlayerType {
-  // peer: Peer;
-}
-
-export interface OpponentPlayerType extends PlayerType {
-  // conn: DataConnection;
-}

@@ -1,10 +1,10 @@
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { useEffect } from "react";
 import {
-  clientPlayerSymbolAtom,
+  clientSymbolAtom,
   gameStepAtom,
-  opponentPlayerIdAtom,
-  opponentPlayerSymbolAtom,
+  opponentIdAtom,
+  opponentSymbolAtom,
   roomAtom,
 } from "~/atoms/gameAtoms";
 import { Modal } from "~/components/modal/Modal";
@@ -14,9 +14,9 @@ import "./ConnectingModal.scss";
 
 export const ConnectingModal = () => {
   const gameStep = useAtomValue(gameStepAtom);
-  const clientSymbol = useAtomValue(clientPlayerSymbolAtom);
-  const setOpponentId = useSetAtom(opponentPlayerIdAtom);
-  const setOpponentSymbol = useSetAtom(opponentPlayerSymbolAtom);
+  const clientSymbol = useAtomValue(clientSymbolAtom);
+  const setOpponentId = useSetAtom(opponentIdAtom);
+  const setOpponentSymbol = useSetAtom(opponentSymbolAtom);
   const [room, setRoom] = useAtom(roomAtom);
 
   // Connect to game

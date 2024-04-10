@@ -1,8 +1,5 @@
 import { useAtomValue } from "jotai";
-import {
-  clientPlayerSymbolAtom,
-  opponentPlayerSymbolAtom,
-} from "~/atoms/gameAtoms";
+import { clientSymbolAtom, opponentSymbolAtom } from "~/atoms/gameAtoms";
 import { PieceLetter } from "~/types/gameTypes";
 import "./SymbolDisplay.scss";
 
@@ -11,8 +8,8 @@ export interface SymbolDisplayProps {
 }
 
 export const SymbolDisplay = ({ letter }: SymbolDisplayProps) => {
-  const clientSymbol = useAtomValue(clientPlayerSymbolAtom);
-  const opponentSymbol = useAtomValue(opponentPlayerSymbolAtom);
+  const clientSymbol = useAtomValue(clientSymbolAtom);
+  const opponentSymbol = useAtomValue(opponentSymbolAtom);
   const invert = letter === "O" && clientSymbol === opponentSymbol;
   let symbol = "❓";
   if (letter === "C" && clientSymbol) {

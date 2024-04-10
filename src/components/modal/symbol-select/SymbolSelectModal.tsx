@@ -1,13 +1,13 @@
 import { useAtomValue, useSetAtom } from "jotai";
 import { useCallback } from "react";
-import { clientPlayerSymbolAtom, gameStepAtom } from "~/atoms/gameAtoms";
+import { clientSymbolAtom, gameStepAtom } from "~/atoms/gameAtoms";
 import { Modal } from "~/components/modal/Modal";
 import { selectableSymbolDisplays } from "~/config/symbolsConfig";
 import "./SymbolSelectModal.scss";
 
 export const SymbolSelectModal = () => {
   const gameStep = useAtomValue(gameStepAtom);
-  const setClientSymbol = useSetAtom(clientPlayerSymbolAtom);
+  const setClientSymbol = useSetAtom(clientSymbolAtom);
 
   const handleSelectSymbol = useCallback(
     (symbol: string) => {

@@ -1,0 +1,15 @@
+.game-over-label {
+}
+
+.game-over-display {
+  user-select: none;
+  font-size: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-again-button {
+  margin-top: 1em;
+  color: white;
+}

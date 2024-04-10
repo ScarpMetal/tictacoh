@@ -1,11 +1,17 @@
-import { useAtomCallback } from "jotai/utils";
+import { useAtom, useSetAtom } from "jotai";
+import { RESET, useAtomCallback } from "jotai/utils";
 import { useCallback } from "react";
 import {
+  clientSymbolAtom,
+  framesAtom,
   framesAtomFamily,
+  opponentIdAtom,
+  opponentSymbolAtom,
   pieceMap,
+  roomAtom,
   unplayedPiecesAtom,
 } from "~/atoms/gameAtoms";
-import { FrameId, PieceId } from "~/types/gameTypes";
+import { FrameId, GameStep, PieceId } from "~/types/gameTypes";
 
 export const useCanPlacePieceInFrame = () => {
   return useAtomCallback(
@@ -48,5 +54,48 @@ export const useTryPlacePiece = () => {
       },
       [canPlacePieceInFrame]
     )
+  );
+};
+
+export const useRestart = () => {
+  const [room, setRoom] = useAtom(roomAtom);
+  const setUnplayedPieces = useSetAtom(unplayedPiecesAtom);
+  const setFrames = useSetAtom(framesAtom);
+  const setOpponentId = useSetAtom(opponentIdAtom);
+  const setOpponentSymbol = useSetAtom(opponentSymbolAtom);
+  const setClientSymbol = useSetAtom(clientSymbolAtom);
+
+  return useCallback(
+    (gameStep: GameStep) => {
+      switch (gameStep) {
+        case "playing":
+          setUnplayedPieces(RESET);
+          setFrames(RESET);
+          break;
+        case "connecting":
+          setUnplayedPieces(RESET);
+          setFrames(RESET);
+          setOpponentId(null);
+          setOpponentSymbol(null);
+          break;
+        case "symbol-select":
+          setUnplayedPieces(RESET);
+          setFrames(RESET);
+          setOpponentId(null);
+          setOpponentSymbol(null);
+          setClientSymbol(null);
+          room?.leave();
+          setRoom(null);
+          break;
+      }
+    },
+    [
+      room,
+      setClientSymbol,
+      setOpponentId,
+      setOpponentSymbol,
+      setRoom,
+      setUnplayedPieces,
+    ]
   );
 };

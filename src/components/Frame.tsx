@@ -15,7 +15,7 @@ export function Frame({ index }: FrameProps) {
   const canPlacePieceInFrame = useCanPlacePieceInFrame();
   const frameId = useMemo(() => validFrameId(`frame${index}`), [index]);
   const piece = useAtomValue(framesAtomFamily(frameId));
-  const { setNodeRef, active, isOver } = useDroppable({
+  const { setNodeRef, active } = useDroppable({
     id: frameId,
     data: { index, piece },
   });

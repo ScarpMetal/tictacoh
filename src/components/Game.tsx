@@ -44,7 +44,7 @@ export function Game() {
   const handleDragEnd = useCallback(
     (event: DragEndEvent) => {
       // Check that drop happened over a droppable frame
-      if (!event.over?.id) return;
+      if (!event.over?.id || !String(event.over.id).startsWith("frame")) return;
       if (!sendPlayedPiece) return;
 
       // Validate pieceId and frameId are in the correct format
