@@ -6,7 +6,7 @@ import { PieceType } from "~/types/gameTypes";
 import "./Pieces.scss";
 
 export interface PiecesProps {
-  symbol: "X" | "O";
+  symbol: "C" | "O";
   pieces: PieceType[];
 }
 

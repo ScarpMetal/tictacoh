@@ -12,10 +12,13 @@
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "date-fns": "^3.6.0",
+    "firebase": "^10.10.0",
     "jotai": "^2.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.72.0"
+    "sass": "^1.72.0",
+    "trystero": "^0.18.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

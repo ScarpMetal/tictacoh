@@ -1,19 +1,15 @@
-import { useAtomValue } from "jotai";
-import { gameStepAtom } from "~/atoms/gameAtoms";
-import { ConnectingModal } from "~/components/ConnectingModal";
 import { Game } from "~/components/Game";
-import { SymbolSelectModal } from "~/components/SymbolSelectModal";
 import { GameManagerEffect } from "~/components/effects/GameManagerEffect";
+import { ConnectingModal } from "~/components/modal";
+import { SymbolSelectModal } from "~/components/modal/symbol-select/SymbolSelectModal";
 import "./App.scss";
 
 export function App() {
-  const gameStep = useAtomValue(gameStepAtom);
-
   return (
     <>
       <GameManagerEffect />
-      {gameStep === "symbol-select" && <SymbolSelectModal />}
-      {gameStep === "connecting" && <ConnectingModal />}
+      <SymbolSelectModal />
+      <ConnectingModal />
       <Game />
     </>
   );

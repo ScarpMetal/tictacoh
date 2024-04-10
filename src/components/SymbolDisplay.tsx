@@ -1,23 +1,29 @@
 import { useAtomValue } from "jotai";
 import {
-  opponentSymbolDisplayAtom,
-  playerSymbolDisplayAtom,
+  clientPlayerSymbolAtom,
+  opponentPlayerSymbolAtom,
 } from "~/atoms/gameAtoms";
-import { PieceSymbol } from "~/types/gameTypes";
+import { PieceLetter } from "~/types/gameTypes";
 import "./SymbolDisplay.scss";
 
 export interface SymbolDisplayProps {
-  symbol: PieceSymbol;
+  letter: PieceLetter;
 }
 
-export const SymbolDisplay = ({ symbol }: SymbolDisplayProps) => {
-  const playerSymbolDisplay = useAtomValue(playerSymbolDisplayAtom);
-  const opponentSymbolDisplay = useAtomValue(opponentSymbolDisplayAtom);
-  const invert =
-    symbol === "O" && playerSymbolDisplay === opponentSymbolDisplay;
+export const SymbolDisplay = ({ letter }: SymbolDisplayProps) => {
+  const clientSymbol = useAtomValue(clientPlayerSymbolAtom);
+  const opponentSymbol = useAtomValue(opponentPlayerSymbolAtom);
+  const invert = letter === "O" && clientSymbol === opponentSymbol;
+  let symbol = "❓";
+  if (letter === "C" && clientSymbol) {
+    symbol = clientSymbol;
+  } else if (letter === "O" && opponentSymbol) {
+    symbol = opponentSymbol;
+  }
+
   return (
     <div className="symbol-display" data-invert={invert}>
-      {symbol === "X" ? playerSymbolDisplay : opponentSymbolDisplay}
+      {symbol}
     </div>
   );
 };

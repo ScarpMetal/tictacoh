@@ -28,9 +28,9 @@ export function Frame({ index }: FrameProps) {
 
   return (
     <div className="frame" ref={setNodeRef} data-can-place={canPlace}>
-      {piece?.symbol && (
+      {piece?.letter && (
         <span className="piece" data-level={piece.level}>
-          <SymbolDisplay symbol={piece.symbol} />
+          <SymbolDisplay letter={piece.letter} />
         </span>
       )}
     </div>

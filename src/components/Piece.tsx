@@ -2,7 +2,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS, Transform } from "@dnd-kit/utilities";
 import { useAtomValue } from "jotai";
 import { ForwardedRef, forwardRef, useMemo } from "react";
-import { symbolTurnAtom } from "~/atoms/gameAtoms";
+import { letterTurnAtom } from "~/atoms/gameAtoms";
 import { SymbolDisplay } from "~/components/SymbolDisplay";
 import { PieceType } from "~/types/gameTypes";
 import "./Piece.scss";
@@ -13,10 +13,10 @@ export interface PieceProps {
 }
 
 export const Piece = ({ piece }: PieceProps) => {
-  const symbolTurn = useAtomValue(symbolTurnAtom);
+  const letterTurn = useAtomValue(letterTurnAtom);
   const isDraggable = useMemo(
-    () => piece.symbol === "X" && symbolTurn === piece.symbol,
-    [piece, symbolTurn]
+    () => piece.letter === "C" && letterTurn === piece.letter,
+    [piece, letterTurn]
   );
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: piece.id,
@@ -58,11 +58,11 @@ const MovablePieceDisplay = forwardRef(
         className="piece in-tray"
         ref={ref}
         data-level={piece.level}
-        data-is-player={piece.symbol === "X"}
+        data-is-player={piece.letter === "C"}
         style={style}
         {...rest}
       >
-        <SymbolDisplay symbol={piece.symbol} />
+        <SymbolDisplay letter={piece.letter} />
       </div>
     );
   }
