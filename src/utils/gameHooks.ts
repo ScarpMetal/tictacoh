@@ -92,6 +92,7 @@ export const useRestart = () => {
     [
       room,
       setClientSymbol,
+      setFrames,
       setOpponentId,
       setOpponentSymbol,
       setRoom,
